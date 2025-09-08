@@ -72,7 +72,7 @@ builder.add_edge("tools", "agentNode")
 graph = builder.compile()
 
 
-messages = graph.invoke({"messages":HumanMessage("AI agents from Microsoft news article")})
+# messages = graph.invoke({"messages":HumanMessage("AI agents from Microsoft news article")})
 
-for m in messages["messages"]:
-    m.pretty_print()
+# for m in messages["messages"]:
+#     m.pretty_print()

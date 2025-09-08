@@ -10,3 +10,5 @@ langgraph
 python-dotenv
 arxiv
 faiss-cpu
+langgraph-checkpoint-sqlite
+streamlit
