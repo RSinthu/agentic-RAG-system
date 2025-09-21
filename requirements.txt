@@ -12,3 +12,6 @@ arxiv
 faiss-cpu
 langgraph-checkpoint-sqlite
 streamlit
+whisper
+audio_recorder_streamlit
+pytorch
