@@ -1,14 +1,16 @@
 # 🤖 Agentic RAG Chatbot
 
-An intelligent chatbot that combines Retrieval-Augmented Generation (RAG) with multiple AI tools to provide comprehensive answers from various sources.
+An intelligent chatbot that combines Retrieval-Augmented Generation (RAG) with multiple AI tools to provide comprehensive answers from various sources. Features voice input capabilities with automatic speech recognition.
 
 ## 🌟 Features
 
 - **Multi-Source Knowledge**: Combines information from documents, Wikipedia, ArXiv papers, and web search
 - **Intelligent Agent**: Uses ReAct (Reasoning + Acting) pattern to choose appropriate tools
 - **Vector Search**: FAISS-powered semantic search for document retrieval
-- **Interactive UI**: Clean Streamlit interface for easy interaction
+- **Interactive UI**: Clean Streamlit interface with chat history
+- **Voice Input**: Speech-to-text using OpenAI Whisper model
 - **Real-time Responses**: Fast responses with conversation memory
+- **Persistent Chat**: Maintains conversation history throughout the session
 
 ## 🛠️ Available Tools
 
@@ -48,19 +50,27 @@ An intelligent chatbot that combines Retrieval-Augmented Generation (RAG) with m
 
 4. **Run the application**
    ```bash
-   streamlit run streamlit_app.py
+   streamlit run main.py
    ```
 
 5. **Open your browser**
    Navigate to `http://localhost:8501`
 
+## 🎤 Voice Input
+
+The chatbot supports voice input through:
+- **Microphone button** in the chat interface
+- **Whisper model** for accurate speech recognition
+- **Real-time transcription** with automatic processing
+
+Click the microphone icon, speak your question, and the system will automatically transcribe and process your input.
 
 ## 🏗️ Project Structure
 
 ```
 AgenticRagChatbot/
 ├── graph.py              # Main agent logic and tools setup
-├── streamlit_app.py       # Streamlit web interface
+├── main.py               # Streamlit web interface with voice support
 ├── requirements.txt       # Python dependencies
 ├── .env                  # Environment variables (create this)
 ├── readme.md             # This file
@@ -78,17 +88,29 @@ AgenticRagChatbot/
 
 The chatbot uses:
 - **LLM**: ChatGroq with `openai/gpt-oss-120b` model
+- **Speech Recognition**: OpenAI Whisper `small` model
 - **Embeddings**: HuggingFace `sentence-transformers/all-MiniLM-L6-v2`
 - **Vector Store**: FAISS for document indexing
 
+### Required Dependencies
+
+Key packages include:
+- `streamlit` - Web interface
+- `langchain` & `langgraph` - Agent framework
+- `audio-recorder-streamlit` - Voice input component
+- `openai-whisper` - Speech recognition
+- `langchain-groq` - LLM integration
+- `langchain-tavily` - Web search
+- `faiss-cpu` - Vector database
 
 ## 🔍 How It Works
 
-1. **User Input**: User asks a question through Streamlit interface
-2. **Agent Reasoning**: ReAct agent analyzes the query and selects appropriate tools
-3. **Tool Execution**: Agent uses selected tools (retriever, Wikipedia, ArXiv, web search)
-4. **Response Generation**: LLM synthesizes information from all sources
-5. **Output**: Comprehensive answer displayed to user
+1. **User Input**: User types or speaks a question through Streamlit interface
+2. **Speech Processing**: If using voice, Whisper transcribes audio to text
+3. **Agent Reasoning**: ReAct agent analyzes the query and selects appropriate tools
+4. **Tool Execution**: Agent uses selected tools (retriever, Wikipedia, ArXiv, web search)
+5. **Response Generation**: LLM synthesizes information from all sources
+6. **Output**: Comprehensive answer displayed with conversation history
 
 ## 🚨 Troubleshooting
 
